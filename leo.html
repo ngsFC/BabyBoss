@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MISSIONE SEGRETA - Compleanno Leonardo</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Quicksand:wght@400;600;700&family=Rajdhani:wght@400;600;700&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Rajdhani', sans-serif;
+            background: linear-gradient(135deg, #001133 0%, #002255 30%, #003377 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+        }
+        
+        .invitation {
+            background: linear-gradient(135deg, #002255, #003377);
+            border-radius: 25px;
+            padding: 40px;
+            max-width: 520px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,102,204,0.4), 0 0 100px rgba(102,204,255,0.2);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+            border: 3px solid #0066cc;
+        }
+        
+        .classified-border {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 2px dashed #66ccff;
+            border-radius: 20px;
+            pointer-events: none;
+            animation: neon-pulse 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neon-pulse {
+            from { border-color: #66ccff; box-shadow: 0 0 10px #66ccff; }
+            to { border-color: #3399ff; box-shadow: 0 0 20px #3399ff; }
+        }
+        
+        .spy-gadgets {
+            position: absolute;
+            font-size: 2em;
+            opacity: 0.1;
+            animation: scan 6s linear infinite;
+            z-index: 1;
+            color: #66ccff;
+        }
+        
+        .gadget1 { top: 20px; left: 25px; animation-delay: 0s; }
+        .gadget2 { top: 35px; right: 30px; animation-delay: 1.5s; }
+        .gadget3 { bottom: 45px; left: 20px; animation-delay: 3s; }
+        .gadget4 { bottom: 30px; right: 25px; animation-delay: 4.5s; }
+        
+        @keyframes scan {
+            0% { transform: scale(1) rotate(0deg); opacity: 0.1; }
+            50% { transform: scale(1.2) rotate(180deg); opacity: 0.3; }
+            100% { transform: scale(1) rotate(360deg); opacity: 0.1; }
+        }
+        
+        .agent-icon {
+            position: absolute;
+            font-size: 2.8em;
+            animation: stealth-move 5s ease-in-out infinite;
+            z-index: 2;
+        }
+        
+        .agent1 {
+            top: 25px;
+            left: 35px;
+            animation-delay: 0s;
+        }
+        
+        .agent2 {
+            top: 30px;
+            right: 40px;
+            animation-delay: 1.2s;
+        }
+        
+        .agent3 {
+            bottom: 50px;
+            left: 30px;
+            animation-delay: 2.4s;
+        }
+        
+        .agent4 {
+            bottom: 45px;
+            right: 35px;
+            animation-delay: 3.6s;
+        }
+        
+        @keyframes agent-glow {
+            from { 
+                box-shadow: 0 0 25px rgba(102,204,255,0.8), 0 0 50px rgba(102,204,255,0.4);
+                transform: scale(1);
+            }
+            to { 
+                box-shadow: 0 0 35px rgba(102,204,255,1), 0 0 70px rgba(102,204,255,0.6);
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes stealth-move {
+            0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
+            25% { transform: translateY(-8px) scale(1.1) rotate(5deg); opacity: 0.8; }
+            50% { transform: translateY(-12px) scale(1); opacity: 1; }
+            75% { transform: translateY(-8px) scale(1.1) rotate(-5deg); opacity: 0.8; }
+        }
+        
+        .header {
+            position: relative;
+            z-index: 10;
+            margin-bottom: 25px;
+        }
+        
+        .classified-stamp {
+            background: #0066cc;
+            color: #ffffff;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-family: 'Orbitron', monospace;
+            font-weight: 900;
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            display: inline-block;
+            transform: rotate(-5deg);
+            box-shadow: 0 0 20px rgba(0,102,204,0.7);
+            animation: flash 3s ease-in-out infinite;
+        }
+        
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .mission-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.2em;
+            background: linear-gradient(45deg, #0066cc, #66ccff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0;
+            text-shadow: 0 0 30px rgba(102,204,255,0.7);
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.8));
+            font-weight: 900;
+        }
+        
+        .subtitle {
+            font-size: 1.2em;
+            color: #66ccff;
+            margin: 10px 0;
+            font-weight: 700;
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .code-phrase {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1em;
+            color: #ffffff;
+            font-style: italic;
+            margin: 15px 0;
+            font-weight: 600;
+            background: rgba(0,102,204,0.2);
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #0066cc;
+        }
+        
+        .agent-container {
+            background: linear-gradient(135deg, #0066cc, #004499);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+            border: 3px solid #66ccff;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 0 30px rgba(0,102,204,0.5);
+        }
+        
+        .agent-name {
+            font-family: 'Orbitron', monospace;
+            font-size: 2.5em;
+            color: #ffffff;
+            margin: 0;
+            text-shadow: 2px 2px 0px #000000, 0 0 20px rgba(255,255,255,0.5);
+            font-weight: 900;
+        }
+        
+        .age {
+            font-size: 4em;
+            background: linear-gradient(45deg, #66ccff, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-family: 'Orbitron', monospace;
+            margin: 15px 0;
+            text-shadow: 0 0 30px rgba(102,204,255,1);
+            filter: drop-shadow(3px 3px 6px rgba(0,0,0,0.8));
+            font-weight: 900;
+            position: relative;
+        }
+        
+        .mission-text {
+            font-size: 1.3em;
+            color: #ffffff;
+            font-weight: 700;
+            margin: 0;
+            font-family: 'Orbitron', monospace;
+        }
+        
+        .briefing {
+            background: linear-gradient(135deg, #003377, #002255);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 30px 0;
+            position: relative;
+            z-index: 10;
+            border: 2px solid #66ccff;
+            box-shadow: inset 0 0 20px rgba(102,204,255,0.2);
+        }
+        
+        .briefing-item {
+            margin: 18px 0;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1em;
+        }
+        
+        .icon {
+            display: inline-block;
+            width: 30px;
+            margin-right: 10px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #66ccff;
+        }
+        
+        .location {
+            line-height: 1.5;
+        }
+        
+        .recruitment-section {
+            background: linear-gradient(135deg, #002255, #001133);
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            border: 3px solid #0066cc;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 0 30px rgba(0,102,204,0.3);
+        }
+        
+        .recruitment-title {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.4em;
+            color: #0066cc;
+            margin-bottom: 15px;
+            font-weight: 900;
+        }
+        
+        .codename-input {
+            width: 100%;
+            max-width: 300px;
+            padding: 12px;
+            border: 2px solid #66ccff;
+            border-radius: 15px;
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            text-align: center;
+            margin: 10px 0;
+            background: #002255;
+            color: #ffffff;
+            box-shadow: inset 0 0 10px rgba(102,204,255,0.3);
+        }
+        
+        .codename-input:focus {
+            outline: none;
+            border-color: #0066cc;
+            box-shadow: 0 0 15px rgba(0,102,204,0.7), inset 0 0 10px rgba(0,102,204,0.3);
+        }
+        
+        .codename-input::placeholder {
+            color: #888;
+        }
+        
+        .cta {
+            background: linear-gradient(135deg, #0066cc, #004499);
+            color: white;
+            padding: 15px 35px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: 700;
+            border: 2px solid #66ccff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,102,204,0.5), 0 0 20px rgba(102,204,255,0.3);
+            font-family: 'Orbitron', monospace;
+            margin-top: 15px;
+        }
+        
+        .cta:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(0,102,204,0.7), 0 0 30px rgba(102,204,255,0.5);
+            background: linear-gradient(135deg, #004499, #003366);
+        }
+        
+        .cta:active {
+            transform: translateY(0px) scale(1);
+        }
+        
+        .tech-line {
+            height: 3px;
+            background: linear-gradient(to right, #0066cc, #66ccff, #ffffff, #66ccff, #0066cc);
+            border-radius: 2px;
+            margin: 25px 0;
+            position: relative;
+            z-index: 10;
+            animation: data-stream 3s linear infinite;
+        }
+        
+        @keyframes data-stream {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        
+        .mission-quote {
+            background: linear-gradient(135deg, rgba(102,204,255,0.2), rgba(0,102,204,0.2));
+            border-radius: 15px;
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #66ccff;
+            font-weight: 700;
+            border: 1px solid #66ccff;
+            position: relative;
+            z-index: 10;
+            font-family: 'Rajdhani', sans-serif;
+        }
+        
+        .security-clearance {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #66ccff;
+            color: #001133;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.7em;
+            font-weight: 900;
+            font-family: 'Orbitron', monospace;
+            transform: rotate(15deg);
+            z-index: 10;
+        }
+        
+        .footer-warning {
+            margin-top: 25px;
+            color: #888;
+            font-size: 0.85em;
+            position: relative;
+            z-index: 10;
+            font-weight: 600;
+            font-family: 'Orbitron', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation">
+        <div class="classified-border"></div>
+        <div class="security-clearance">TOP SECRET</div>
+        
+        <!-- Gadget spia -->
+        <div class="spy-gadgets gadget1">🔍</div>
+        <div class="spy-gadgets gadget2">📡</div>
+        <div class="spy-gadgets gadget3">💣</div>
+        <div class="spy-gadgets gadget4">🎯</div>
+        
+        <!-- Agenti segreti -->
+        <div class="agent-icon agent1">🕶️</div>
+        <div class="agent-icon agent2">👶</div>
+        <div class="agent-icon agent3">🎯</div>
+        <div class="agent-icon agent4">🕵️</div>
+        
+        <div class="header">
+            <div class="classified-stamp">⚠️ CLASSIFIED ⚠️</div>
+            <h1 class="mission-title">MISSIONE SEGRETA</h1>
+            <p class="subtitle">🎯 OPERAZIONE COMPLEANNO 🎯</p>
+            <div class="code-phrase">🗝️ Codice di accesso: "Happy Birthday Agent!" 🗝️</div>
+        </div>
+        
+        <div class="tech-line"></div>
+        
+        <div class="agent-container">
+            <div style="margin-bottom: 20px;">
+                <img src="https://raw.githubusercontent.com/ngsFC/BabyBoss/main/leo.jpg" alt="Agente Leonardo" style="
+                    width: 120px; 
+                    height: 120px; 
+                    border-radius: 50%; 
+                    border: 4px solid #66ccff; 
+                    box-shadow: 0 0 25px rgba(102,204,255,0.8), 0 0 50px rgba(102,204,255,0.4);
+                    object-fit: cover;
+                    animation: agent-glow 3s ease-in-out infinite alternate;
+                ">
+            </div>
+            <div class="agent-name">🕶️ AGENTE LEONARDO 🎯</div>
+            <div class="age">1°</div>
+            <p class="mission-text">ANNIVERSARY MISSION</p>
+        </div>
+        
+        <div class="mission-quote">
+            🎯 "Missione: divertimento al 100%!" 🎉<br>
+            <strong>Il nostro agente segreto più giovane compie 1 anno di servizio!</strong>
+        </div>
+        
+        <div class="tech-line"></div>
+        
+        <div class="briefing">
+            <div class="briefing-item">
+                <span class="icon">📅</span>
+                <strong>Data Missione:</strong> Domenica 20 Luglio 2025 - ore 20:00
+            </div>
+            
+            <div class="briefing-item location">
+                <span class="icon">📍</span>
+                <strong>Base Operativa Segreta:</strong><br>
+                Agriturismo La Colombaia<br>
+                Via Grotte San Lazzaro, 9<br>
+                81043 Capua (CE)
+            </div>
+            
+            <div class="briefing-item">
+                <span class="icon">🎯</span>
+                <strong>Obiettivi:</strong> Festa sotto copertura, torta esplosiva, gadget speciali!
+            </div>
+            
+            <div class="briefing-item">
+                <span class="icon">🕶️</span>
+                <strong>Dress Code:</strong> Agente segreto, spy gear o abbigliamento da infiltrazione!
+            </div>
+        </div>
+        
+        <div class="recruitment-section">
+            <div class="recruitment-title">🎯 RECLUTAMENTO AGENTI 🎯</div>
+            <p style="color: #66ccff; font-weight: 600; margin: 10px 0;">Inserisci il tuo nome in codice:</p>
+            <!-- SOSTITUISCI "YOUR_FORM_ID" con il tuo ID Formspree -->
+            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display: inline-block;">
+                <input type="text" name="agente" class="codename-input" placeholder="Nome agente segreto..." maxlength="50" required>
+                <input type="hidden" name="_subject" value="🎯 NUOVO AGENTE RECLUTATO - Missione Leonardo">
+                <input type="hidden" name="_cc" value="tuaemail@gmail.com">
+                <br>
+                <button type="submit" class="cta">🕶️ ACCETTA LA MISSIONE! 🎯</button>
+            </form>
+        </div>
+        
+        <p class="footer-warning">
+            Per info classificate: [inserire contatto]<br>
+            <em>🎯 "La missione è top secret... ma il divertimento è garantito!" 🕶️</em>
+        </p>
+    </div>
+</body>
+</html>
