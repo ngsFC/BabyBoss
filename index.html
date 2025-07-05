@@ -447,17 +447,62 @@
         </div>
         
         <div class="recruitment-section">
-            <div class="recruitment-title">🎯 RECLUTAMENTO AGENTI 🎯</div>
-            <p style="color: #66ccff; font-weight: 600; margin: 10px 0;">Inserisci il tuo nome in codice:</p>
-            <!-- SOSTITUISCI "YOUR_FORM_ID" con il tuo ID Formspree -->
-            <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="display: inline-block;">
-                <input type="text" name="agente" class="codename-input" placeholder="Nome agente segreto..." maxlength="50" required>
-                <input type="hidden" name="_subject" value="🎯 NUOVO AGENTE RECLUTATO - Missione Leonardo">
-                <input type="hidden" name="_cc" value="tuaemail@gmail.com">
-                <br>
-                <button type="submit" class="cta">🕶️ ACCETTA LA MISSIONE! 🎯</button>
-            </form>
-        </div>
+    <div class="recruitment-title">🎯 RECLUTAMENTO AGENTI 🎯</div>
+    <p style="color: #66ccff; font-weight: 600; margin: 10px 0;">Inserisci il tuo nome in codice:</p>
+    <form id="agentForm" onsubmit="submitAgent(event)">
+        <input type="text" id="agentName" class="codename-input" placeholder="Nome agente segreto..." maxlength="50" required>
+        <br>
+        <button type="submit" class="cta" id="submitBtn">🕶️ ACCETTA LA MISSIONE! 🎯</button>
+    </form>
+    <div id="responseMessage" style="margin-top: 15px; color: #66ccff; font-weight: 600;"></div>
+</div>
+
+<script>
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw9CuMJGAr_-ynYI14rzr5t-pkRoetX1nZVyH0ppvVWBCX3_b9IXYNxbcOmCe6rxRPKXw/exec';
+
+async function submitAgent(event) {
+    event.preventDefault();
+    
+    const btn = document.getElementById('submitBtn');
+    const msg = document.getElementById('responseMessage');
+    const name = document.getElementById('agentName').value.trim();
+    
+    if (!name) {
+        msg.textContent = '🚨 Inserisci il nome per completare la missione!';
+        return;
+    }
+    
+    // Mostra loading
+    btn.textContent = '🔄 Missione in corso...';
+    btn.disabled = true;
+    
+    try {
+        const response = await fetch(SCRIPT_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: `agente=${encodeURIComponent(name)}`
+        });
+        
+        const result = await response.json();
+        
+        if (result.success) {
+            msg.innerHTML = `🎉 MISSIONE COMPLETATA!<br>Agente ${name} reclutato con successo! 🕶️`;
+            document.getElementById('agentName').value = '';
+        } else {
+            msg.textContent = '❌ Errore nella missione. Riprova!';
+        }
+        
+    } catch (error) {
+        msg.textContent = '🚨 Problema di connessione. Riprova!';
+    }
+    
+    // Ripristina bottone
+    btn.textContent = '🕶️ ACCETTA LA MISSIONE! 🎯';
+    btn.disabled = false;
+}
+</script>
         
         <p class="footer-warning">
             Per info: contattare Papà o Mamma !<br>
